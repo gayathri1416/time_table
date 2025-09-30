@@ -24,13 +24,35 @@ Execute the program using runserver command.
 
 # PROGRAM
 ```
-<html><head>
+views.py:
+
+from django.shortcuts import render
+from django.http import HttpResponse
+def project12(request):
+    return render(request,'timetable.html') 
+
+urls.py:
+
+from django.contrib import admin
+from django.urls import path
+from myapp.views import project12
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('',project12),
+]
+
+html code:
+
+<html>
+    <head>
     <title> 
-        timetable
+        Timetable
     </title>
     </head>
-    <body>
-        <img src= "Sec logo.png" alt="college logo" style="max-width:100%; height:auto;">     
+    <body> 
+        {% load static %}
+        <img src="{% static 'logo.png' %}" alt="college logo" style="display:block; margin-left:auto; margin-right:auto;width:50%;height:auto;">
         <h1><center>SLOT TIME TABLE - GAYATHRI C (25009125)</center></h1><table border="1px" cellpadding="20px" cellspacing="4px" align="center" style="font-size:large;background-color: rgb(143, 7, 143);text-align: center;" <caption="">
         <tbody><tr style="background-color: cornsilk;font-size:x-large;">
                 <th>DAY/PERIOD </th>
@@ -81,7 +103,6 @@ Execute the program using runserver command.
                     <td style="color: aliceblue;"><b>Python</b></td>
                 </tr>
         </tbody></table>
-        
         <table border="1px" cellpadding="20px" cellspacing="4px" align="center" style="margin-top :50px;background-color: rgba(255, 228, 188, 0.755);" <tr="">
         <tbody><tr><th style="font-size:x-large;background-color:rgb(214, 8, 8);">S.NO</th>
         <th style="font-size:x-large;background-color:rgb(214, 8, 8);">SUBJECT CODE</th>
@@ -101,16 +122,13 @@ Execute the program using runserver command.
             <td style="background-color:rgb(214, 8, 8);">3.</td>
             <td>19AI301</td>
             <td>Python</td>
-        </tr>
-        
-            
+        </tr>    
         </tbody></table>
-    
-
 </body></html>
+
 ```
 # OUTPUT
-![alt text](<Screenshot 2025-09-26 142236.png>)
+![alt text](<Screenshot 2025-09-30 085538.png>)
 
 # RESULT
 The program for creating slot timetable using basic HTML tags is executed successfully.
